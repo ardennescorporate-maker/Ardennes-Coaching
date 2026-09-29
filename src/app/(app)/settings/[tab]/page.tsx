@@ -10,6 +10,7 @@ import { NotificationsTab } from "./NotificationsTab";
 import { PrivacyTab } from "./PrivacyTab";
 import { SecurityTab } from "./SecurityTab";
 import { SubscriptionTab } from "./SubscriptionTab";
+import { billingHistory } from "@/lib/server/billing";
 
 const TABS = [
   ["account", "Account"],
@@ -44,7 +45,7 @@ export default async function SettingsTab({ params }: PageProps<"/settings/[tab]
   if (tab === "subscription") {
     const supabase = await createClient();
     const { data: code } = p.beta_code_id ? await supabase.from("beta_codes").select("code").eq("id", p.beta_code_id).maybeSingle() : { data: null };
-    body = <SubscriptionTab isBeta={v.isBeta} code={code?.code ?? null} launchPlan={p.launch_plan} joined={p.beta_joined_at} />;
+    body = <SubscriptionTab isBeta={v.isBeta} code={code?.code ?? null} launchPlan={p.launch_plan} joined={p.beta_joined_at} history={await billingHistory(v).catch(() => [])} />;
   }
 
   return (
