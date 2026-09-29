@@ -2,7 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { SESSION_ONLY_COOKIE, SUPABASE_ANON_KEY, SUPABASE_URL, sessionOnly, supabaseConfigured } from "./env";
 
-const PUBLIC = ["/login", "/signup", "/forgot", "/auth", "/privacy", "/terms", "/setup", "/offline"];
+const PUBLIC = ["/pip-render", "/login", "/signup", "/forgot", "/auth", "/privacy", "/terms", "/setup", "/offline"];
 
 /** Refreshes the auth session cookie and keeps signed-out users out of the app. */
 export async function updateSession(request: NextRequest) {

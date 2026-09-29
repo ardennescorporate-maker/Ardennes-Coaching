@@ -14,7 +14,7 @@ export function ChipGroup<T extends string>({
   label,
   className,
 }: {
-  options: readonly T[] | readonly { value: T; label: string }[];
+  options: readonly NoInfer<T>[] | readonly { value: NoInfer<T>; label: string }[];
   value: T;
   onChange: (v: T) => void;
   label: string;
