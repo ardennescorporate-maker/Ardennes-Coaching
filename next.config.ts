@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  experimental: {
+    // Evidence photos and notes for flashcards (images are compressed in the browser first).
+    serverActions: { bodySizeLimit: "12mb" },
+  },
   async headers() {
     return [
       {

@@ -3,6 +3,7 @@ import { useState, useTransition } from "react";
 import { Upload } from "lucide-react";
 import { useRewards } from "@/components/rewards/Rewards";
 import { logStudyAction } from "./actions";
+import { compressFormImages } from "@/lib/compress-image";
 
 export function LogStudyForm({ subjects, onDone, dark }: { subjects: string[]; onDone?: () => void; dark?: boolean }) {
   const [msg, setMsg] = useState<{ error?: string; ok?: string } | null>(null);
@@ -14,7 +15,7 @@ export function LogStudyForm({ subjects, onDone, dark }: { subjects: string[]; o
       className={`grid gap-3 rounded-2xl p-4 sm:grid-cols-[1fr_120px] ${dark ? "bg-white/10" : "bg-surface-2"}`}
       action={(fd) =>
         start(async () => {
-          const r = await logStudyAction(fd);
+          const r = await logStudyAction(await compressFormImages(fd, "evidence"));
           if (r.ok) {
             celebrate(r.reward, `Logged ${r.minutes} minutes of study`);
             setMsg({ ok: `Verified! ${r.minutes} minutes logged.` });
