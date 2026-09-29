@@ -7,6 +7,7 @@ import { TopBar } from "@/components/shell/TopBar";
 import { BetaBanner } from "@/components/shell/BetaBanner";
 import { AskPipButton } from "@/components/shell/AskPipButton";
 import { ToastProvider } from "@/components/ui/Toast";
+import { RewardsProvider } from "@/components/rewards/Rewards";
 import { ThemeSync } from "@/components/shell/ThemeSync";
 import { VisitTracker } from "@/components/shell/VisitTracker";
 import { RememberAccount } from "@/components/shell/RememberAccount";
@@ -47,6 +48,7 @@ export default async function AppLayout({ children }: LayoutProps<"/">) {
 
   return (
     <ToastProvider>
+      <RewardsProvider>
       <a href="#main" className="sr-only-focusable fixed left-3 top-3 z-[70] rounded-xl bg-blue px-4 py-2 font-extrabold text-white">
         {t("shell.skip")}
       </a>
@@ -64,6 +66,7 @@ export default async function AppLayout({ children }: LayoutProps<"/">) {
         </div>
       </div>
       <AskPipButton label={t("shell.askPip")} />
+      </RewardsProvider>
     </ToastProvider>
   );
 }
