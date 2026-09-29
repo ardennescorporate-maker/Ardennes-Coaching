@@ -106,5 +106,6 @@ d("xp, streaks and protected columns", () => {
 
 afterAll(async () => {
   await pool.query("delete from auth.users where email like '%@test.dev'");
+  await pool.query("delete from beta_codes where code ~ '^[A-Z0-9]{7}-(AB23|CD45|EF67)$'");
   await pool.end();
 });
