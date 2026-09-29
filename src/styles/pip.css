@@ -1,0 +1,56 @@
+.pip {
+  overflow: visible;
+  display: block;
+}
+.pip-bob {
+  animation: pip-bob 3.2s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+.pip-tilt {
+  animation: pip-tilt 2.4s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+.pip-wing-wave {
+  transform-origin: 146px 104px;
+  transform-box: view-box;
+  animation: pip-wave 1.1s ease-in-out infinite;
+}
+.pip-face-crop {
+  margin: -18% 0 0 -27.5%;
+}
+
+@keyframes pip-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4%);
+  }
+}
+@keyframes pip-tilt {
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+@keyframes pip-wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-14deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pip-bob,
+  .pip-tilt,
+  .pip-wing-wave {
+    animation: none;
+  }
+}

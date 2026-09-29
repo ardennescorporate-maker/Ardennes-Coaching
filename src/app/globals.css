@@ -1,0 +1,179 @@
+@import "tailwindcss";
+@import "../styles/components.css" layer(components);
+@import "../styles/pip.css" layer(components);
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ─── Design tokens ─────────────────────────────────────────── */
+:root {
+  --bg: #f4f7fc;
+  --surface: #ffffff;
+  --surface-2: #eef3fb;
+  --ink: #0f1e3d;
+  --ink-2: #4a5b7a;
+  /* Spec value #8593AD darkened to meet WCAG AA (4.5:1) on every light surface. */
+  --ink-3: #5a6782;
+  --line: #dce4f0;
+  --blue: #2f7bf5;
+  --blue-deep: #1b5ccb;
+  --blue-soft: #e4eeff;
+  /* Solid blue behind white text (AA contrast). */
+  --blue-fill: #1f66d9;
+  --navy: #17307a;
+  --navy-deep: #0e1f55;
+  --yellow: #ffc226;
+  --yellow-deep: #e0a100;
+  --yellow-soft: #fff4d1;
+  --good: #1fa463;
+  --good-soft: #ddf5e8;
+  --bad: #e5484d;
+  --bad-soft: #fde4e5;
+  --warn: #d99100;
+  --warn-soft: #fff1d6;
+  --on-blue: #ffffff;
+  /* Text versions of brand/status colours (AA on every light surface). Fills keep the spec colours. */
+  --blue-ink: #1b5ccb;
+  --good-ink: #12703f;
+  --bad-ink: #b8232a;
+  --warn-ink: #805300;
+  --glass: rgba(255, 255, 255, 0.72);
+  --glass-line: rgba(47, 123, 245, 0.22);
+  --glow-blue: rgba(47, 123, 245, 0.35);
+  --glow-gold: rgba(255, 194, 38, 0.45);
+  --bg-glow-blue: rgba(47, 123, 245, 0.1);
+  --bg-glow-yellow: rgba(255, 194, 38, 0.1);
+  --shadow-card: 0 4px 0 var(--line);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #0c1426;
+  --surface: #131e36;
+  --surface-2: #1a2745;
+  --ink: #edf2fc;
+  --ink-2: #a9b6cf;
+  /* Spec value #7886A3 lightened to meet WCAG AA on dark surfaces. */
+  --ink-3: #8e9bb8;
+  --line: #273656;
+  --blue: #5b9bff;
+  --blue-deep: #2f6fd6;
+  --blue-soft: #172b52;
+  --blue-fill: #2f6fd6;
+  --yellow: #ffcb45;
+  --yellow-deep: #e0a100;
+  --yellow-soft: #3a3016;
+  --good: #3dcb82;
+  --good-soft: #143a2a;
+  --bad: #ff6b70;
+  --bad-soft: #3f1b22;
+  --warn: #f0b340;
+  --warn-soft: #3a2e14;
+  --on-blue: #ffffff;
+  --blue-ink: #7aaeff;
+  --good-ink: #3dcb82;
+  --bad-ink: #ff8589;
+  --warn-ink: #f0b340;
+  --glass: rgba(26, 39, 69, 0.72);
+  --glass-line: rgba(91, 155, 255, 0.3);
+  --glow-blue: rgba(91, 155, 255, 0.45);
+  --glow-gold: rgba(255, 203, 69, 0.4);
+  --bg-glow-blue: rgba(91, 155, 255, 0.2);
+  --bg-glow-yellow: rgba(255, 203, 69, 0.12);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-blue: var(--blue);
+  --color-blue-deep: var(--blue-deep);
+  --color-blue-soft: var(--blue-soft);
+  --color-blue-fill: var(--blue-fill);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-yellow: var(--yellow);
+  --color-yellow-deep: var(--yellow-deep);
+  --color-yellow-soft: var(--yellow-soft);
+  --color-blue-ink: var(--blue-ink);
+  --color-good-ink: var(--good-ink);
+  --color-bad-ink: var(--bad-ink);
+  --color-warn-ink: var(--warn-ink);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --font-display: var(--font-baloo), "Baloo 2", system-ui, sans-serif;
+  --font-sans: var(--font-nunito), "Nunito", system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+  --radius-card: 20px;
+  --radius-btn: 14px;
+  --radius-field: 12px;
+}
+
+/* ─── Base ──────────────────────────────────────────────────── */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(900px 600px at 100% 0%, var(--bg-glow-blue), transparent 60%),
+    radial-gradient(800px 600px at 0% 100%, var(--bg-glow-yellow), transparent 60%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display);
+  line-height: 1.15;
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.micro {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--blue-soft);
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
