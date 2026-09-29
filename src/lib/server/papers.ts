@@ -258,7 +258,7 @@ Return: questions[{id, awarded, feedback}] for every question above; strengths (
 
     await db.from("papers").update({ status: "marked", result, score, max_score: max, pct, band }).eq("id", id);
     if (lost.length) await addWeakTopics(v.userId, cfg.subject, lost);
-    await bumpCounters(v.userId, { questions: qs.length, papers: 1 });
+    await bumpCounters(v.userId, { questions: qs.length, correct: list.filter((m) => m.awarded === m.max).length, papers: 1 });
     const reward = await awardXp(v.userId, XP.paper(pct), "paper", { ref: `paper:${id}` });
     await notify(v.userId, "ai", `Feedback ready: ${paper.title}`, `You scored ${pct}% (${band}).`, `/papers/${id}`, `paper:${id}`);
     return { result, reward };

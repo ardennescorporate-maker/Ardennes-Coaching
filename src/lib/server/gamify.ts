@@ -85,14 +85,15 @@ export async function checkAchievements(userId: string): Promise<Badge[]> {
 }
 
 /** Increments protected profile counters. */
-export async function bumpCounters(userId: string, d: { questions?: number; minutes?: number; papers?: number }) {
+export async function bumpCounters(userId: string, d: { questions?: number; correct?: number; minutes?: number; papers?: number }) {
   const db = adminClient();
-  const { data: p } = await db.from("profiles").select("questions_answered, study_minutes, papers_completed").eq("id", userId).single();
+  const { data: p } = await db.from("profiles").select("questions_answered, questions_correct, study_minutes, papers_completed").eq("id", userId).single();
   if (!p) return;
   await db
     .from("profiles")
     .update({
       questions_answered: p.questions_answered + Math.max(0, d.questions ?? 0),
+      questions_correct: p.questions_correct + Math.max(0, Math.min(d.correct ?? 0, d.questions ?? 0)),
       study_minutes: p.study_minutes + Math.max(0, d.minutes ?? 0),
       papers_completed: p.papers_completed + Math.max(0, d.papers ?? 0),
     })

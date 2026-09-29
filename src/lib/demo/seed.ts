@@ -90,6 +90,7 @@ async function seedDemoData(uid: string, today: string) {
         last_study_date: addDays(today, -1),
         study_minutes: minutes + 600,
         questions_answered: 64,
+        questions_correct: 49,
         papers_completed: 4,
         beta_code_id: code?.id ?? null,
         beta_joined_at: new Date(Date.now() - 30 * 86400_000).toISOString(),

@@ -90,7 +90,7 @@ export async function scoreQuiz(v: Viewer, deckId: string, picks: { cardId: stri
     }
     results.push({ cardId: c.id, correct: ok, answer: c.a });
   }
-  await bumpCounters(v.userId, { questions: results.length });
+  await bumpCounters(v.userId, { questions: results.length, correct });
   const earns = results.length > 0 && (await allow(`quiz-xp:${v.userId}:${v.today}`, 8, 86400));
   const reward = earns ? await awardXp(v.userId, XP.deckQuiz(correct), "deck_quiz") : null;
   return { correct, total: results.length, results, reward };

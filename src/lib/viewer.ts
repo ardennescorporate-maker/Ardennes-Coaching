@@ -24,6 +24,7 @@ export type Profile = {
   last_study_date: string | null;
   study_minutes: number;
   questions_answered: number;
+  questions_correct: number;
   papers_completed: number;
   role: "student" | "admin";
   plan: "free" | "premium" | "premium_exam";

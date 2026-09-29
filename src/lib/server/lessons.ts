@@ -205,7 +205,7 @@ export async function completeLesson(v: Viewer, ctx: LessonCtx, contentId: strin
   );
 
   if (g.correct < g.total) await addWeakTopics(v.userId, ctx.course.subject, [ctx.lesson.title]);
-  await bumpCounters(v.userId, { questions: g.total });
+  await bumpCounters(v.userId, { questions: g.total, correct: g.correct });
   const reward = firstTime
     ? await awardXp(v.userId, XP.lessonFirst(g.correct), "lesson", { ref: `lesson:${ctx.lesson.id}` })
     : await awardXp(v.userId, XP.lessonReplay(g.correct), "lesson_replay");
