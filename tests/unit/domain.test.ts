@@ -141,3 +141,25 @@ describe("pip tips", () => {
     expect(pipTip(base)).toBe("Ready when you are. Ask me anything about your subjects.");
   });
 });
+
+import { BUILTIN_LESSONS } from "@/lib/content/builtinLessons";
+import { answerIndex, gradeLesson, starsFor, validateLesson } from "@/lib/domain/lesson";
+
+describe("lessons", () => {
+  it("built-in lessons are valid", () => {
+    for (const l of Object.values(BUILTIN_LESSONS)) expect(validateLesson(l)).toBeNull();
+  });
+  it("maps answer letters", () => {
+    expect(answerIndex("B", ["a", "b", "c", "d"])).toBe(1);
+    expect(answerIndex("(d)", ["a", "b", "c", "d"])).toBe(3);
+    expect(answerIndex("c", ["a", "b", "c", "d"])).toBe(2);
+  });
+  it("awards stars", () => {
+    expect([starsFor(4, 4), starsFor(3, 4), starsFor(2, 4), starsFor(0, 4)]).toEqual([3, 2, 1, 1]);
+  });
+  it("grades on the server's answer key", () => {
+    const l = BUILTIN_LESSONS["Mathematics Advanced|What is a function?"];
+    expect(gradeLesson(l, [1, 0, 2, 1])).toMatchObject({ correct: 4, stars: 3 });
+    expect(gradeLesson(l, [1, 0, 2, null])).toMatchObject({ correct: 3, stars: 2, results: [true, true, true, false] });
+  });
+});
