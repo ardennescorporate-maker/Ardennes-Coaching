@@ -225,7 +225,7 @@ function Calculator() {
           aria-label="Expression"
           inputMode="decimal"
         />
-        <p className="num min-h-8 text-2xl font-bold text-blue" aria-live="polite">
+        <p className="num min-h-8 text-2xl font-bold text-blue-ink" aria-live="polite">
           {shown ?? (live ? `= ${live}` : "")}
         </p>
       </div>
@@ -279,7 +279,7 @@ function Notes({ subjects, notes }: { subjects: string[]; notes: Note[] }) {
             ))}
           </select>
           <textarea className="field" rows={10} placeholder="Write your notes…" aria-label="Note body" maxLength={20000} value={form.body} onChange={(e) => setForm({ ...form, body: e.target.value })} />
-          {error && <p className="text-sm font-bold text-bad">{error}</p>}
+          {error && <p className="text-sm font-bold text-bad-ink">{error}</p>}
           <div className="flex gap-2">
             <button className="btn btn-primary" disabled={pending}>
               Save note

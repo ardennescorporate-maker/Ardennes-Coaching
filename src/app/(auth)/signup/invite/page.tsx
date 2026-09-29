@@ -19,7 +19,7 @@ export default async function InvitePage({ searchParams }: PageProps<"/signup/in
       <span className="beta-tag">PRIVATE BETA</span>
       <h1 className="mt-2 text-2xl font-extrabold">Enter your invite code</h1>
       {removed ? (
-        <p role="alert" className="mt-2 rounded-xl bg-warn-soft px-3 py-2 text-sm font-bold text-warn">
+        <p role="alert" className="mt-2 rounded-xl bg-warn-soft px-3 py-2 text-sm font-bold text-warn-ink">
           Your beta access was removed. If you think this is a mistake, contact the StudyPilot team. You can enter a new invite code below.
         </p>
       ) : (

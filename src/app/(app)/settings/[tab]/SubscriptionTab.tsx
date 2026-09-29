@@ -41,7 +41,7 @@ export function SubscriptionTab({ isBeta, code, launchPlan, joined, history }: {
                 </span>
                 <span className="pill pill-muted">{h.status}</span>
                 {h.url && (
-                  <a href={h.url} target="_blank" rel="noreferrer" className="text-sm font-bold text-blue">
+                  <a href={h.url} target="_blank" rel="noreferrer" className="text-sm font-bold text-blue-ink">
                     Invoice
                   </a>
                 )}

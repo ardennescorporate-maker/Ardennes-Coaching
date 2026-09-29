@@ -67,7 +67,7 @@ export function FeedbackForm() {
           />
         </label>
         {msg && (
-          <p role={msg.error ? "alert" : "status"} className={`rounded-xl px-3 py-2 text-sm font-bold ${msg.error ? "bg-bad-soft text-bad" : "bg-good-soft text-good"}`}>
+          <p role={msg.error ? "alert" : "status"} className={`rounded-xl px-3 py-2 text-sm font-bold ${msg.error ? "bg-bad-soft text-bad-ink" : "bg-good-soft text-good-ink"}`}>
             {msg.error ?? msg.ok}
           </p>
         )}

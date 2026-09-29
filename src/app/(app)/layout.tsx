@@ -49,7 +49,7 @@ export default async function AppLayout({ children }: LayoutProps<"/">) {
   return (
     <ToastProvider>
       <RewardsProvider>
-      <a href="#main" className="sr-only-focusable fixed left-3 top-3 z-[70] rounded-xl bg-blue px-4 py-2 font-extrabold text-white">
+      <a href="#main" className="sr-only-focusable fixed left-3 top-3 z-[70] rounded-xl bg-blue-fill px-4 py-2 font-extrabold text-white">
         {t("shell.skip")}
       </a>
       <ThemeSync pref={p.theme} />

@@ -83,8 +83,8 @@ export default async function HomePage() {
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <Tile highlight icon={<Flame size={20} />} label="Study streak" value={`${streak}`} sub={streak === 1 ? "day" : "days"} />
         <Tile icon={<Clock size={20} />} label="Hours studied" value={(p.study_minutes / 60).toFixed(1)} sub={`${stats.sessions} sessions`} />
-        <Tile icon={<Layers size={20} />} label="Cards due" value={`${due}`} sub={due ? <Link className="font-extrabold text-blue" href="/flashcards">Review now</Link> : "All caught up"} />
-        <Tile icon={<Trophy size={20} />} label="Group rank" value={myRank ? `#${myRank}` : "—"} sub={group ? group.name : <Link className="font-extrabold text-blue" href="/groups">Join a group</Link>} />
+        <Tile icon={<Layers size={20} />} label="Cards due" value={`${due}`} sub={due ? <Link className="font-extrabold text-blue-ink" href="/flashcards">Review now</Link> : "All caught up"} />
+        <Tile icon={<Trophy size={20} />} label="Group rank" value={myRank ? `#${myRank}` : "—"} sub={group ? group.name : <Link className="font-extrabold text-blue-ink" href="/groups">Join a group</Link>} />
       </div>
 
       <div className="grid gap-5 lg:grid-cols-[1.4fr_1fr]">
@@ -111,7 +111,7 @@ export default async function HomePage() {
           <CardHeader title="Exam countdowns" action={<Link href="/planner#exams" className="btn btn-ghost btn-sm">Manage</Link>} />
           {upcoming.length === 0 ? (
             <p className="text-ink-3">
-              No exams yet. <Link href="/planner#exams" className="font-extrabold text-blue">Add your exam dates</Link> and Pip will plan around them.
+              No exams yet. <Link href="/planner#exams" className="font-extrabold text-blue-ink">Add your exam dates</Link> and Pip will plan around them.
             </p>
           ) : (
             <ul className="flex flex-col gap-2">
@@ -140,7 +140,7 @@ export default async function HomePage() {
             <ul className="flex flex-col gap-2">
               {todayPlan.map((b, i) => (
                 <li key={i} className="flex items-start gap-3 rounded-xl border-l-4 border-blue bg-surface-2 px-3 py-2">
-                  <CalendarClock size={18} className="mt-0.5 flex-none text-blue" aria-hidden />
+                  <CalendarClock size={18} className="mt-0.5 flex-none text-blue-ink" aria-hidden />
                   <span className="min-w-0">
                     <span className="block font-extrabold">
                       {b.subject} <span className="num text-sm font-bold text-ink-3">· {b.minutes} min</span>
@@ -166,7 +166,7 @@ export default async function HomePage() {
             <div className="flex items-center gap-3">
               <Pip mood="think" size={70} animation="none" />
               <p className="text-ink-2">
-                Join or create a study group to compete with friends. <Link href="/groups" className="font-extrabold text-blue">Find a group</Link>
+                Join or create a study group to compete with friends. <Link href="/groups" className="font-extrabold text-blue-ink">Find a group</Link>
               </p>
             </div>
           ) : (
@@ -180,7 +180,7 @@ export default async function HomePage() {
                   <Avatar name={r.username} colour={r.avatarColour} size={28} />
                   <span className="min-w-0 flex-1 truncate font-extrabold">
                     {r.username}
-                    {r.isYou && <span className="font-bold text-blue"> (you)</span>}
+                    {r.isYou && <span className="font-bold text-blue-ink"> (you)</span>}
                   </span>
                   <span className="num text-sm font-bold">{r.xp.toLocaleString()}</span>
                 </li>
@@ -212,7 +212,7 @@ export default async function HomePage() {
             </div>
           ) : (
             <p className="text-ink-3">
-              You&apos;ve finished every lesson in your courses. <Link href="/lessons" className="font-extrabold text-blue">Add a course</Link>
+              You&apos;ve finished every lesson in your courses. <Link href="/lessons" className="font-extrabold text-blue-ink">Add a course</Link>
             </p>
           )}
         </Card>
@@ -242,13 +242,13 @@ export default async function HomePage() {
 
 function Tile({ icon, label, value, sub, highlight }: { icon: React.ReactNode; label: string; value: string; sub: React.ReactNode; highlight?: boolean }) {
   return (
-    <div className={`card card-pad ${highlight ? "!border-blue-deep !bg-blue text-white !shadow-[0_4px_0_var(--blue-deep)]" : ""}`}>
+    <div className={`card card-pad ${highlight ? "!border-blue-deep !bg-blue-fill text-white !shadow-[0_4px_0_var(--blue-deep)]" : ""}`}>
       <div className="flex items-center gap-2">
-        <span className={`grid h-8 w-8 place-items-center rounded-lg ${highlight ? "bg-white/20" : "bg-blue-soft text-blue"}`}>{icon}</span>
-        <span className={`micro ${highlight ? "text-white/85" : "text-ink-3"}`}>{label}</span>
+        <span className={`grid h-8 w-8 place-items-center rounded-lg ${highlight ? "bg-white/20" : "bg-blue-soft text-blue-ink"}`}>{icon}</span>
+        <span className={`micro ${highlight ? "text-white" : "text-ink-3"}`}>{label}</span>
       </div>
       <p className="num mt-2 text-3xl font-bold">{value}</p>
-      <p className={`text-sm ${highlight ? "text-white/85" : "text-ink-3"}`}>{sub}</p>
+      <p className={`text-sm ${highlight ? "text-white" : "text-ink-3"}`}>{sub}</p>
     </div>
   );
 }

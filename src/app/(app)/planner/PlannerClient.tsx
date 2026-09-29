@@ -26,7 +26,7 @@ export function PlannerClient(p: { today: string; subjects: string[]; hours: Pla
               const today = d.date === p.today;
               return (
                 <div key={d.date} className={`flex min-h-[180px] flex-col gap-1.5 rounded-2xl border-2 p-2 ${today ? "border-blue bg-blue-soft" : "border-line"}`}>
-                  <p className={`text-center text-sm font-extrabold ${today ? "text-blue" : ""}`}>
+                  <p className={`text-center text-sm font-extrabold ${today ? "text-blue-ink" : ""}`}>
                     {DAY_LABEL[d.weekday]} <span className="num font-bold text-ink-3">{Number(d.date.slice(8))}</span>
                   </p>
                   {d.blocks.length === 0 && <p className="text-center text-xs text-ink-3">Rest day</p>}
@@ -115,7 +115,7 @@ function TimelineCard({ timeline }: { timeline: Timeline | null }) {
             {timeline.weeks.map((w) => (
               <li key={w.label} className="rounded-xl bg-surface-2 p-3">
                 <p className="font-extrabold">
-                  {w.label}: <span className="font-bold text-blue">{w.focus}</span>
+                  {w.label}: <span className="font-bold text-blue-ink">{w.focus}</span>
                 </p>
                 <ul className="mt-1 list-disc pl-5 text-sm text-ink-2">
                   {w.tasks.map((t) => (
@@ -138,7 +138,7 @@ function TimelineCard({ timeline }: { timeline: Timeline | null }) {
         <p className="text-ink-3">Add your exams, then let Pip write a revision timeline with your weak topics first.</p>
       )}
       {error && (
-        <p role="alert" className="mt-3 rounded-xl bg-bad-soft px-3 py-2 text-sm font-bold text-bad">
+        <p role="alert" className="mt-3 rounded-xl bg-bad-soft px-3 py-2 text-sm font-bold text-bad-ink">
           {error}
         </p>
       )}
@@ -177,7 +177,7 @@ function ExamsCard({ exams, subjects, today }: { exams: Exam[]; subjects: string
           Add
         </button>
       </form>
-      {error && <p className="mt-2 text-sm font-bold text-bad">{error}</p>}
+      {error && <p className="mt-2 text-sm font-bold text-bad-ink">{error}</p>}
       <ul className="mt-3 flex flex-col gap-2">
         {upcoming.length === 0 && <li className="text-ink-3">No upcoming exams.</li>}
         {upcoming.map((e) => {
@@ -191,7 +191,7 @@ function ExamsCard({ exams, subjects, today }: { exams: Exam[]; subjects: string
                   {e.subject} · {e.date}
                 </span>
               </span>
-              <button className="icon-btn !h-9 !w-9 hover:!text-bad" aria-label={`Remove ${e.name}`} onClick={() => start(() => removeExamAction(e.id))}>
+              <button className="icon-btn !h-9 !w-9 hover:!text-bad-ink" aria-label={`Remove ${e.name}`} onClick={() => start(() => removeExamAction(e.id))}>
                 <Trash2 size={16} />
               </button>
             </li>
@@ -236,7 +236,7 @@ function HomeworkCard({ homework, subjects, today }: { homework: Homework[]; sub
           Add
         </button>
       </form>
-      {error && <p className="mt-2 text-sm font-bold text-bad">{error}</p>}
+      {error && <p className="mt-2 text-sm font-bold text-bad-ink">{error}</p>}
       <ul className="mt-3 flex flex-col gap-2">
         {sorted.length === 0 && <li className="text-ink-3">No homework. Nice!</li>}
         {sorted.map((h) => {
@@ -261,11 +261,11 @@ function HomeworkCard({ homework, subjects, today }: { homework: Homework[]; sub
               />
               <span className={`min-w-0 flex-1 ${done ? "text-ink-3 line-through" : ""}`}>
                 <span className="block truncate font-extrabold">{h.task}</span>
-                <span className={`block text-xs ${overdue ? "font-bold text-bad" : dueToday ? "font-bold text-warn" : "text-ink-3"}`}>
+                <span className={`block text-xs ${overdue ? "font-bold text-bad-ink" : dueToday ? "font-bold text-warn-ink" : "text-ink-3"}`}>
                   {h.subject} · {overdue ? "Overdue" : dueToday ? "Due today" : `Due ${h.due}`}
                 </span>
               </span>
-              <button className="icon-btn !h-9 !w-9 hover:!text-bad" aria-label={`Delete ${h.task}`} onClick={() => start(() => deleteHomeworkAction(h.id))}>
+              <button className="icon-btn !h-9 !w-9 hover:!text-bad-ink" aria-label={`Delete ${h.task}`} onClick={() => start(() => deleteHomeworkAction(h.id))}>
                 <Trash2 size={16} />
               </button>
             </li>
@@ -315,11 +315,11 @@ function CalendarCard({ today, exams, homework, studied }: { today: string; exam
           const ex = exams.filter((e) => e.date === d);
           const hw = homework.filter((h) => h.due === d);
           return (
-            <div key={d} className={`min-h-[64px] rounded-xl border-2 p-1 text-left text-[11px] ${d === today ? "border-blue" : "border-transparent"} ${inMonth ? "bg-surface-2" : "opacity-40"}`}>
+            <div key={d} className={`min-h-[64px] rounded-xl border-2 p-1 text-left text-[11px] ${d === today ? "border-blue" : "border-transparent"} ${inMonth ? "bg-surface-2" : "text-ink-3"}`}>
               <span className="num block text-xs font-bold">{Number(d.slice(8))}</span>
-              {studiedSet.has(d) && <span className="block truncate rounded bg-good-soft px-1 font-bold text-good">Studied</span>}
+              {studiedSet.has(d) && <span className="block truncate rounded bg-good-soft px-1 font-bold text-good-ink">Studied</span>}
               {ex.map((e) => (
-                <span key={e.id} className="mt-0.5 block truncate rounded bg-bad-soft px-1 font-bold text-bad" title={e.name}>
+                <span key={e.id} className="mt-0.5 block truncate rounded bg-bad-soft px-1 font-bold text-bad-ink" title={e.name}>
                   {e.name}
                 </span>
               ))}

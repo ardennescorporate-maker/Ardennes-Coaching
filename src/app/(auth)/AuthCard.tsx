@@ -61,10 +61,13 @@ export function AuthCard({ mode, next, notice }: { mode: "signup" | "login"; nex
           <span className="label">Email</span>
           <input name="email" type="email" autoComplete="email" required className="field" value={email} onChange={(e) => setEmail(e.target.value)} aria-invalid={state?.field === "email"} />
         </label>
-        <label className="block">
-          <span className="label">Password</span>
+        <div>
+          <label htmlFor="password" className="label">
+            Password
+          </label>
           <span className="relative block">
             <input
+              id="password"
               name="password"
               type={show ? "text" : "password"}
               autoComplete={mode === "signup" ? "new-password" : "current-password"}
@@ -74,7 +77,7 @@ export function AuthCard({ mode, next, notice }: { mode: "signup" | "login"; nex
               aria-invalid={state?.field === "password"}
               aria-describedby={mode === "signup" ? "pw-hint" : undefined}
             />
-            <button type="button" className="absolute right-2 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-lg text-ink-3 hover:text-blue" onClick={() => setShow((s) => !s)} aria-label={show ? "Hide password" : "Show password"}>
+            <button type="button" className="absolute right-2 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-lg text-ink-3 hover:text-blue-ink" onClick={() => setShow((s) => !s)} aria-label={show ? "Hide password" : "Show password"}>
               {show ? <EyeOff size={18} /> : <Eye size={18} />}
             </button>
           </span>
@@ -83,14 +86,14 @@ export function AuthCard({ mode, next, notice }: { mode: "signup" | "login"; nex
               At least 8 characters.
             </span>
           )}
-        </label>
+        </div>
         <div className="flex items-center justify-between gap-3">
           <label className="flex items-center gap-2 text-sm font-bold text-ink-2">
             <input type="checkbox" name="keep" defaultChecked className="h-4 w-4 accent-[var(--blue)]" />
             Keep me logged in
           </label>
           {mode === "login" && (
-            <Link href="/forgot" className="text-sm font-extrabold text-blue">
+            <Link href="/forgot" className="text-sm font-extrabold text-blue-ink">
               Forgot password?
             </Link>
           )}

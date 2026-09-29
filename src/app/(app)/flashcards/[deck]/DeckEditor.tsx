@@ -38,7 +38,7 @@ export function DeckEditor({ deckId, cards }: { deckId: string; cards: { id: str
             <span className="label">Back (answer)</span>
             <textarea className="field" rows={3} maxLength={500} value={a} onChange={(e) => setA(e.target.value)} required />
           </label>
-          {error && <p role="alert" className="text-sm font-bold text-bad sm:col-span-2">{error}</p>}
+          {error && <p role="alert" className="text-sm font-bold text-bad-ink sm:col-span-2">{error}</p>}
           <div className="sm:col-span-2">
             <button className="btn btn-primary" disabled={pending}>
               Add card
@@ -58,7 +58,7 @@ export function DeckEditor({ deckId, cards }: { deckId: string; cards: { id: str
                 <Markdown className="text-ink-2">{c.a}</Markdown>
                 <div className="flex items-center gap-2">
                   <span className="pill pill-muted num">Box {c.box}</span>
-                  <button className="icon-btn !h-9 !w-9 hover:!text-bad" aria-label="Delete card" onClick={() => start(() => deleteCardAction(c.id, deckId))}>
+                  <button className="icon-btn !h-9 !w-9 hover:!text-bad-ink" aria-label="Delete card" onClick={() => start(() => deleteCardAction(c.id, deckId))}>
                     <Trash2 size={16} />
                   </button>
                 </div>

@@ -139,11 +139,11 @@ export function Tutor(props: {
             {props.chats.length === 0 && <li className="p-2 text-sm text-ink-3">No saved chats yet.</li>}
             {props.chats.map((c) => (
               <li key={c.id} className="flex items-center gap-2">
-                <Link href={`/tutor?chat=${c.id}`} className={`min-w-0 flex-1 truncate rounded-lg px-2 py-1.5 text-sm font-bold hover:bg-surface ${c.id === chatId ? "text-blue" : ""}`}>
+                <Link href={`/tutor?chat=${c.id}`} className={`min-w-0 flex-1 truncate rounded-lg px-2 py-1.5 text-sm font-bold hover:bg-surface ${c.id === chatId ? "text-blue-ink" : ""}`}>
                   {c.title} <span className="font-semibold text-ink-3">· {c.subject}</span>
                 </Link>
                 <button
-                  className="grid h-8 w-8 place-items-center rounded-lg text-ink-3 hover:text-bad"
+                  className="grid h-8 w-8 place-items-center rounded-lg text-ink-3 hover:text-bad-ink"
                   aria-label={`Delete chat ${c.title}`}
                   onClick={async () => {
                     await deleteChatAction(c.id);
@@ -205,7 +205,7 @@ export function Tutor(props: {
         {messages.map((m, i) =>
           m.role === "user" ? (
             <div key={i} className="flex justify-end">
-              <div className="max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-br-md bg-blue px-4 py-2.5 font-semibold text-white shadow-[0_3px_0_var(--blue-deep)]">{m.content}</div>
+              <div className="max-w-[85%] whitespace-pre-wrap rounded-2xl rounded-br-md bg-blue-fill px-4 py-2.5 font-semibold text-white shadow-[0_3px_0_var(--blue-deep)]">{m.content}</div>
             </div>
           ) : (
             <div key={i} className="flex items-start gap-2.5">
@@ -231,7 +231,7 @@ export function Tutor(props: {
           ),
         )}
         {error && (
-          <p role="alert" className="rounded-xl bg-bad-soft px-3 py-2 text-sm font-bold text-bad">
+          <p role="alert" className="rounded-xl bg-bad-soft px-3 py-2 text-sm font-bold text-bad-ink">
             {error}
           </p>
         )}

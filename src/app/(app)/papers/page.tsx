@@ -36,7 +36,7 @@ export default async function PapersPage() {
                   <tr key={p.id}>
                     <td className="num whitespace-nowrap">{fmt.format(new Date(p.created_at))}</td>
                     <td>
-                      <Link href={`/papers/${p.id}`} className="font-extrabold text-blue hover:underline">
+                      <Link href={`/papers/${p.id}`} className="font-extrabold text-blue-ink hover:underline">
                         {p.title}
                       </Link>
                       <span className="block text-xs text-ink-3">{p.subject}</span>

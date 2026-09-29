@@ -30,7 +30,7 @@ export function AuthHero() {
         <h2 className="font-display mt-6 hidden text-4xl font-extrabold leading-tight lg:block">
           Study smarter.
           <br />
-          <span className="text-blue">Fly higher.</span>
+          <span className="text-blue-ink">Fly higher.</span>
         </h2>
         <p className="mt-2 hidden max-w-md text-ink-2 lg:block">Lessons, practice papers with AI marking, flashcards and a planner for the HSC, SAT, AP, GCSE, A-Level and IB.</p>
       </div>

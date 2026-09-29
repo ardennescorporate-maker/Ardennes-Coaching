@@ -46,7 +46,7 @@ export function NotificationBell({ initial, t }: { initial: ShellNotification[];
       >
         <Bell size={19} aria-hidden />
         {unread > 0 && (
-          <span className="num absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-bad px-1 text-[11px] font-bold text-white">
+          <span className="num absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-[#C4282D] px-1 text-[11px] font-bold text-white">
             {unread > 99 ? "99+" : unread}
           </span>
         )}
@@ -103,7 +103,7 @@ export function NotificationBell({ initial, t }: { initial: ShellNotification[];
             })}
           </ul>
           <div className="border-t-2 border-line px-4 py-2.5">
-            <Link href="/settings/notifications" className="text-sm font-extrabold text-blue" onClick={() => setOpen(false)}>
+            <Link href="/settings/notifications" className="text-sm font-extrabold text-blue-ink" onClick={() => setOpen(false)}>
               {t("shell.notifSettings")}
             </Link>
           </div>

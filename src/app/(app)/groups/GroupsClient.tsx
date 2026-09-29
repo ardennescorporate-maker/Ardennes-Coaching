@@ -125,7 +125,7 @@ export function GroupsClient(p: Props) {
                     <Avatar name={r.username} colour={r.avatarColour} size={32} />
                     <span className="min-w-0 flex-1 truncate font-extrabold">
                       {r.username}
-                      {r.isYou && <span className="font-bold text-blue"> (you)</span>}
+                      {r.isYou && <span className="font-bold text-blue-ink"> (you)</span>}
                       {r.isBeta && !r.hidden && <span className="beta-tag ml-1.5">BETA</span>}
                     </span>
                     <span className="flex items-center gap-1 text-sm font-bold text-ink-2" title="Streak">
@@ -208,7 +208,7 @@ function Announcements({ groupId, items }: { groupId: string; items: Ann[] }) {
           <span className="num text-xs text-ink-3">
             {body.length}/{ANNOUNCEMENT_MAX}
           </span>
-          {error && <span className="text-sm font-bold text-bad">{error}</span>}
+          {error && <span className="text-sm font-bold text-bad-ink">{error}</span>}
         </div>
       </form>
       <ul className="mt-4 flex flex-col gap-3">
@@ -224,7 +224,7 @@ function Announcements({ groupId, items }: { groupId: string; items: Ann[] }) {
             </div>
             {!a.mine && (
               <button
-                className="self-start rounded-lg p-1.5 text-ink-3 hover:text-bad"
+                className="self-start rounded-lg p-1.5 text-ink-3 hover:text-bad-ink"
                 aria-label="Report this announcement"
                 title="Report"
                 onClick={() =>
@@ -270,7 +270,7 @@ function JoinCard() {
           Join
         </button>
       </form>
-      {error && <p className="mt-2 text-sm font-bold text-bad">{error}</p>}
+      {error && <p className="mt-2 text-sm font-bold text-bad-ink">{error}</p>}
     </Card>
   );
 }
@@ -310,7 +310,7 @@ function CreateCard() {
           <span className="label">Weekly goal (hours)</span>
           <input className="field num" type="number" min={1} max={500} value={form.goal} onChange={(e) => setForm({ ...form, goal: Number(e.target.value) || 20 })} />
         </label>
-        {error && <p className="text-sm font-bold text-bad sm:col-span-2">{error}</p>}
+        {error && <p className="text-sm font-bold text-bad-ink sm:col-span-2">{error}</p>}
         <div className="sm:col-span-2">
           <button className="btn btn-primary" disabled={pending}>
             Create group

@@ -36,7 +36,7 @@ export function RewardsProvider({ children }: { children: ReactNode }) {
         {level && lp && (
           <div className="flex flex-col items-center gap-3 text-center">
             <Pip mood="cheer" size={150} />
-            <p className="micro text-blue">Level up</p>
+            <p className="micro text-blue-ink">Level up</p>
             <h2 className="font-display text-3xl font-extrabold">Level {level.level}! You&apos;re flying now.</h2>
             <div className="w-full">
               <XpBar value={lp.into} max={lp.span} />

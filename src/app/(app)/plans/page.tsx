@@ -43,7 +43,7 @@ export default async function PlansPage({ searchParams }: PageProps<"/plans">) {
           </p>
         </div>
       )}
-      {sp.billing === "success" && <p className="rounded-xl bg-good-soft px-3 py-2 font-bold text-good">Thanks! Your subscription is active.</p>}
+      {sp.billing === "success" && <p className="rounded-xl bg-good-soft px-3 py-2 font-bold text-good-ink">Thanks! Your subscription is active.</p>}
 
       <PlanCards launchPlan={v.profile.launch_plan} billing={BILLING_ENABLED && !v.isBeta} currentPlan={v.profile.plan} />
 
@@ -65,7 +65,7 @@ export default async function PlansPage({ searchParams }: PageProps<"/plans">) {
                   <td className="font-bold">{f}</td>
                   {cells.map((c, i) => (
                     <td key={i} className="text-ink-2">
-                      {c === "✓" ? <Check size={18} className="text-good" aria-label="Included" /> : c === "—" ? <Minus size={18} className="text-ink-3" aria-label="Not included" /> : c}
+                      {c === "✓" ? <Check size={18} className="text-good-ink" aria-label="Included" /> : c === "—" ? <Minus size={18} className="text-ink-3" aria-label="Not included" /> : c}
                     </td>
                   ))}
                 </tr>

@@ -91,7 +91,7 @@ export function SecurityTab({ history, tz }: { history: Login[]; tz: string }) {
           </button>
         )}
         {msg && (
-          <p role={msg.error ? "alert" : "status"} className={`mt-3 rounded-xl px-3 py-2 text-sm font-bold ${msg.error ? "bg-bad-soft text-bad" : "bg-good-soft text-good"}`}>
+          <p role={msg.error ? "alert" : "status"} className={`mt-3 rounded-xl px-3 py-2 text-sm font-bold ${msg.error ? "bg-bad-soft text-bad-ink" : "bg-good-soft text-good-ink"}`}>
             {msg.error ?? msg.ok}
           </p>
         )}

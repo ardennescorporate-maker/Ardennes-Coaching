@@ -11,11 +11,14 @@
   --surface-2: #eef3fb;
   --ink: #0f1e3d;
   --ink-2: #4a5b7a;
-  --ink-3: #8593ad;
+  /* Spec value #8593AD darkened to meet WCAG AA (4.5:1) on every light surface. */
+  --ink-3: #5a6782;
   --line: #dce4f0;
   --blue: #2f7bf5;
   --blue-deep: #1b5ccb;
   --blue-soft: #e4eeff;
+  /* Solid blue behind white text (AA contrast). */
+  --blue-fill: #1f66d9;
   --navy: #17307a;
   --navy-deep: #0e1f55;
   --yellow: #ffc226;
@@ -28,6 +31,11 @@
   --warn: #d99100;
   --warn-soft: #fff1d6;
   --on-blue: #ffffff;
+  /* Text versions of brand/status colours (AA on every light surface). Fills keep the spec colours. */
+  --blue-ink: #1b5ccb;
+  --good-ink: #12703f;
+  --bad-ink: #b8232a;
+  --warn-ink: #805300;
   --glass: rgba(255, 255, 255, 0.72);
   --glass-line: rgba(47, 123, 245, 0.22);
   --glow-blue: rgba(47, 123, 245, 0.35);
@@ -44,11 +52,13 @@
   --surface-2: #1a2745;
   --ink: #edf2fc;
   --ink-2: #a9b6cf;
-  --ink-3: #7886a3;
+  /* Spec value #7886A3 lightened to meet WCAG AA on dark surfaces. */
+  --ink-3: #8e9bb8;
   --line: #273656;
   --blue: #5b9bff;
   --blue-deep: #2f6fd6;
   --blue-soft: #172b52;
+  --blue-fill: #2f6fd6;
   --yellow: #ffcb45;
   --yellow-deep: #e0a100;
   --yellow-soft: #3a3016;
@@ -59,6 +69,10 @@
   --warn: #f0b340;
   --warn-soft: #3a2e14;
   --on-blue: #ffffff;
+  --blue-ink: #7aaeff;
+  --good-ink: #3dcb82;
+  --bad-ink: #ff8589;
+  --warn-ink: #f0b340;
   --glass: rgba(26, 39, 69, 0.72);
   --glass-line: rgba(91, 155, 255, 0.3);
   --glow-blue: rgba(91, 155, 255, 0.45);
@@ -79,11 +93,16 @@
   --color-blue: var(--blue);
   --color-blue-deep: var(--blue-deep);
   --color-blue-soft: var(--blue-soft);
+  --color-blue-fill: var(--blue-fill);
   --color-navy: var(--navy);
   --color-navy-deep: var(--navy-deep);
   --color-yellow: var(--yellow);
   --color-yellow-deep: var(--yellow-deep);
   --color-yellow-soft: var(--yellow-soft);
+  --color-blue-ink: var(--blue-ink);
+  --color-good-ink: var(--good-ink);
+  --color-bad-ink: var(--bad-ink);
+  --color-warn-ink: var(--warn-ink);
   --color-good: var(--good);
   --color-good-soft: var(--good-soft);
   --color-bad: var(--bad);

@@ -8,7 +8,7 @@ export function Field({ label, hint, error, children, className }: { label: Reac
       {children}
       {hint && !error && <span className="mt-1 block text-xs text-ink-3">{hint}</span>}
       {error && (
-        <span role="alert" className="mt-1 block text-xs font-bold text-bad">
+        <span role="alert" className="mt-1 block text-xs font-bold text-bad-ink">
           {error}
         </span>
       )}

@@ -30,7 +30,7 @@ export function PlanCards({ launchPlan, billing, currentPlan }: { launchPlan: st
           <ul className="mt-4 flex flex-1 flex-col gap-2">
             {p.features.map((f) => (
               <li key={f} className="flex gap-2">
-                <Check size={18} className={`mt-0.5 flex-none ${p.top ? "text-yellow" : "text-good"}`} aria-hidden />
+                <Check size={18} className={`mt-0.5 flex-none ${p.top ? "text-yellow" : "text-good-ink"}`} aria-hidden />
                 {f}
               </li>
             ))}

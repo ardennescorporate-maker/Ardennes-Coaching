@@ -16,13 +16,13 @@ export function FormMessage({ state }: { state: FormState }) {
   if (!state) return null;
   if (state.error)
     return (
-      <p role="alert" className="rounded-xl bg-bad-soft px-3 py-2 text-sm font-bold text-bad">
+      <p role="alert" className="rounded-xl bg-bad-soft px-3 py-2 text-sm font-bold text-bad-ink">
         {state.error}
       </p>
     );
   if (state.ok)
     return (
-      <p role="status" className="rounded-xl bg-good-soft px-3 py-2 text-sm font-bold text-good">
+      <p role="status" className="rounded-xl bg-good-soft px-3 py-2 text-sm font-bold text-good-ink">
         {state.ok}
       </p>
     );

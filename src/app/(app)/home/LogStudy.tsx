@@ -59,7 +59,7 @@ export function LogStudyForm({ subjects, onDone, dark }: { subjects: string[]; o
           {pending ? "Pip is checking…" : "Log verified study"}
         </button>
         {msg && (
-          <p role={msg.error ? "alert" : "status"} className={`rounded-xl px-3 py-1.5 text-sm font-bold ${msg.error ? "bg-bad-soft text-bad" : "bg-good-soft text-good"}`}>
+          <p role={msg.error ? "alert" : "status"} className={`rounded-xl px-3 py-1.5 text-sm font-bold ${msg.error ? "bg-bad-soft text-bad-ink" : "bg-good-soft text-good-ink"}`}>
             {msg.error ?? msg.ok}
           </p>
         )}

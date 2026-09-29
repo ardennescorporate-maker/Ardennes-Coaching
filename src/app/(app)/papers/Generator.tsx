@@ -127,7 +127,7 @@ export function Generator({ subjects, system, year }: { subjects: string[]; syst
           ))}
         </fieldset>
         {error && (
-          <p role="alert" className="rounded-xl bg-bad-soft px-3 py-2 text-sm font-bold text-bad">
+          <p role="alert" className="rounded-xl bg-bad-soft px-3 py-2 text-sm font-bold text-bad-ink">
             {error}
           </p>
         )}

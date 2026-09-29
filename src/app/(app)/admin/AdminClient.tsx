@@ -136,7 +136,7 @@ export function AdminClient(p: Props) {
               <li key={s.id} className="flex flex-wrap items-center gap-3 py-2.5">
                 <span className="min-w-0 flex-1">
                   <span className="font-extrabold">{s.user}</span> · {s.subject} · <span className="num">{s.minutes} min</span>
-                  <span className="block text-sm text-warn">{s.flag_reason}</span>
+                  <span className="block text-sm text-warn-ink">{s.flag_reason}</span>
                 </span>
                 {s.evidence_path && (
                   <button

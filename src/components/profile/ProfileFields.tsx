@@ -49,7 +49,7 @@ export function ProfileFields({ defaults = {}, errorField }: { defaults?: Profil
           aria-invalid={errorField === "username" || Boolean(nameMsg)}
           aria-describedby="username-hint"
         />
-        <span id="username-hint" className={`mt-1 block text-xs ${nameMsg ? "font-bold text-bad" : "text-ink-3"}`}>
+        <span id="username-hint" className={`mt-1 block text-xs ${nameMsg ? "font-bold text-bad-ink" : "text-ink-3"}`}>
           {nameMsg ?? "3–20 characters: letters, numbers, dots and underscores."}
         </span>
       </label>

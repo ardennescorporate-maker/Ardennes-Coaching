@@ -22,7 +22,7 @@ export default async function VerifyPage() {
       ) : (
         <p className="mt-2 text-ink-2">
           This sign-up has expired.{" "}
-          <Link className="font-extrabold text-blue" href="/signup">
+          <Link className="font-extrabold text-blue-ink" href="/signup">
             Start again
           </Link>
           .

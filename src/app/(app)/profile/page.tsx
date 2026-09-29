@@ -104,7 +104,7 @@ export default async function ProfilePage() {
             const got = unlocked.get(a.id);
             const Icon = ICONS[a.icon] ?? Trophy;
             return (
-              <li key={a.id} className={`rounded-2xl border-2 p-3 ${got ? "border-yellow bg-yellow-soft" : "border-line opacity-55"}`}>
+              <li key={a.id} className={`rounded-2xl border-2 p-3 ${got ? "border-yellow bg-yellow-soft" : "border-dashed border-line text-ink-3 [&_p]:!text-ink-3"}`}>
                 <div className="flex items-center gap-2">
                   <span className={`grid h-10 w-10 place-items-center rounded-xl ${got ? "bg-yellow text-[#3a2600]" : "bg-surface-2 text-ink-3"}`}>{got ? <Icon size={20} /> : <Lock size={18} />}</span>
                   {a.beta_only && <span className="beta-tag">BETA</span>}

@@ -91,7 +91,7 @@ export function Review({ deckId, deckName, cards, practice }: { deckId: string; 
                   <span className="text-sm text-ink-3">Tap to flip</span>
                 </span>
                 <span className="card absolute inset-0 flex flex-col items-center justify-center gap-3 !border-blue p-6 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                  <span className="micro text-blue">Answer</span>
+                  <span className="micro text-blue-ink">Answer</span>
                   <Markdown className="text-center text-xl font-bold">{card.a}</Markdown>
                 </span>
               </span>

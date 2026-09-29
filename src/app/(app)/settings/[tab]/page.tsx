@@ -57,7 +57,7 @@ export default async function SettingsTab({ params }: PageProps<"/settings/[tab]
               <Link
                 href={`/settings/${k}`}
                 aria-current={k === tab ? "page" : undefined}
-                className={`block whitespace-nowrap rounded-xl px-3 py-2 font-extrabold ${k === tab ? "bg-blue text-white" : "text-ink-2 hover:bg-surface-2"}`}
+                className={`block whitespace-nowrap rounded-xl px-3 py-2 font-extrabold ${k === tab ? "bg-blue-fill text-white" : "text-ink-2 hover:bg-surface-2"}`}
               >
                 {label}
               </Link>

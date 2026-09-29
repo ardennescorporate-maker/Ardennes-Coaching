@@ -29,10 +29,14 @@ export function LessonPlayer(p: Props) {
   const [saving, startSave] = useTransition();
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const loadSeq = useRef(0);
   const load = useCallback(
     async (fresh: boolean) => {
+      // Only the latest load may update state (effects can run twice, and users can regenerate).
+      const seq = ++loadSeq.current;
       setPhase("loading");
       const r = await loadLessonAction(p.courseSlug, p.lessonSlug, fresh);
+      if (seq !== loadSeq.current) return;
       if (!r.ok) {
         setError(r.error);
         setPhase("error");
@@ -65,6 +69,11 @@ export function LessonPlayer(p: Props) {
     // Initial load of lesson content (network), not derived state.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     void load(false);
+    return () => {
+      // Invalidate any in-flight load for this mount (a counter, not a DOM ref).
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      loadSeq.current++;
+    };
   }, [load]);
 
   // Autosave position (debounced).
@@ -151,7 +160,7 @@ export function LessonPlayer(p: Props) {
                 <ul className="mt-2 flex flex-col gap-2">
                   {c.goals.map((g) => (
                     <li key={g} className="flex gap-2">
-                      <Check className="mt-1 flex-none text-good" size={18} aria-hidden />
+                      <Check className="mt-1 flex-none text-good-ink" size={18} aria-hidden />
                       <Markdown className="flex-1">{g}</Markdown>
                     </li>
                   ))}
@@ -189,7 +198,7 @@ export function LessonPlayer(p: Props) {
                 <Markdown>{c.steps[step].body}</Markdown>
                 {c.steps[step].example && (
                   <div className="mt-4 rounded-2xl border-2 border-blue/30 bg-blue-soft p-4">
-                    <p className="micro text-blue-deep dark:text-blue">Worked example</p>
+                    <p className="micro text-blue-ink">Worked example</p>
                     <Markdown className="mt-1">{c.steps[step].example!}</Markdown>
                   </div>
                 )}
@@ -374,7 +383,7 @@ function Question(props: {
                       : "border-line bg-surface shadow-[0_4px_0_var(--line)] hover:border-blue/50"
               }`}
             >
-              <span className={`num grid h-9 w-9 flex-none place-items-center rounded-xl border-2 ${state === "sel" ? "border-blue bg-blue text-white" : "border-line"}`}>{LETTERS[i]}</span>
+              <span className={`num grid h-9 w-9 flex-none place-items-center rounded-xl border-2 ${state === "sel" ? "border-blue bg-blue-fill text-white" : "border-line"}`}>{LETTERS[i]}</span>
               <Markdown className="min-w-0 flex-1">{o}</Markdown>
             </button>
           );
@@ -382,7 +391,7 @@ function Question(props: {
       </div>
       {checked && (
         <div role="status" className={`rounded-2xl p-4 ${right ? "bg-good-soft" : "bg-bad-soft"}`}>
-          <p className={`font-display text-lg font-extrabold ${right ? "text-good" : "text-bad"}`}>{right ? praise : "Not quite. Here's why:"}</p>
+          <p className={`font-display text-lg font-extrabold ${right ? "text-good-ink" : "text-bad-ink"}`}>{right ? praise : "Not quite. Here's why:"}</p>
           <Markdown className="mt-1">{qq.explain}</Markdown>
           {!right && (
             <p className="mt-2 text-sm font-bold">
@@ -392,7 +401,7 @@ function Question(props: {
         </div>
       )}
       {props.error && (
-        <p role="alert" className="rounded-xl bg-bad-soft px-3 py-2 text-sm font-bold text-bad">
+        <p role="alert" className="rounded-xl bg-bad-soft px-3 py-2 text-sm font-bold text-bad-ink">
           {props.error}
         </p>
       )}

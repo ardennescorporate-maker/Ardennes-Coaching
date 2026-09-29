@@ -71,7 +71,7 @@
 }
 
 .btn-primary {
-  --btn-bg: linear-gradient(180deg, #5fa0ff 0%, #2f7bf5 50%, #1b4fc0 100%);
+  --btn-bg: linear-gradient(180deg, #3d86f5 0%, #1f66d9 55%, #1b4fc0 100%);
   --btn-fg: #ffffff;
   --btn-border: rgba(27, 79, 192, 0.6);
   --btn-glow: 0 8px 22px -8px rgba(47, 123, 245, 0.75);
@@ -101,7 +101,7 @@
 }
 .btn-danger {
   --btn-bg: transparent;
-  --btn-fg: var(--bad);
+  --btn-fg: var(--bad-ink);
   --btn-border: color-mix(in srgb, var(--bad) 35%, transparent);
   --btn-glow: 0 0 0 transparent;
 }
@@ -152,7 +152,7 @@
   position: relative;
 }
 .icon-btn:hover {
-  color: var(--blue);
+  color: var(--blue-ink);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 18%, transparent), 0 6px 18px -8px var(--glow-blue);
 }
 .icon-btn:active {
@@ -181,14 +181,14 @@
   white-space: nowrap;
 }
 .chip:hover {
-  color: var(--blue);
+  color: var(--blue-ink);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 15%, transparent);
 }
 .chip[aria-pressed="true"],
 .chip[aria-checked="true"],
 .chip[aria-selected="true"],
 .chip.is-selected {
-  background: linear-gradient(180deg, #5fa0ff 0%, #2f7bf5 55%, #1b4fc0 100%);
+  background: linear-gradient(180deg, #3d86f5 0%, #1f66d9 55%, #1b4fc0 100%);
   border-color: rgba(27, 79, 192, 0.6);
   color: #ffffff;
   box-shadow: 0 6px 16px -8px rgba(47, 123, 245, 0.8);
@@ -196,6 +196,7 @@
 
 /* ─── Cards ─────────────────────────────────────────────────── */
 .card {
+  min-width: 0;
   background: var(--surface);
   border: 2px solid var(--line);
   border-radius: 20px;
@@ -213,6 +214,7 @@
 /* ─── Form fields ───────────────────────────────────────────── */
 .field {
   width: 100%;
+  min-width: 0;
   min-height: 46px;
   padding: 0.6rem 0.85rem;
   border-radius: 12px;
@@ -331,29 +333,23 @@ select.field {
   font-size: 0.78rem;
   font-weight: 900;
   background: var(--blue-soft);
-  color: var(--blue-deep);
-}
-[data-theme="dark"] .pill {
-  color: var(--blue);
+  color: var(--blue-ink);
 }
 .pill-yellow {
   background: var(--yellow-soft);
-  color: #7a5200;
-}
-[data-theme="dark"] .pill-yellow {
-  color: var(--yellow);
+  color: var(--warn-ink);
 }
 .pill-good {
   background: var(--good-soft);
-  color: var(--good);
+  color: var(--good-ink);
 }
 .pill-bad {
   background: var(--bad-soft);
-  color: var(--bad);
+  color: var(--bad-ink);
 }
 .pill-warn {
   background: var(--warn-soft);
-  color: var(--warn);
+  color: var(--warn-ink);
 }
 .pill-muted {
   background: var(--surface-2);
@@ -482,7 +478,7 @@ select.field {
   box-shadow: 0 0 10px 1px var(--glow-blue);
 }
 .nav-item[aria-current="page"] .nav-icon {
-  background: var(--blue);
+  background: var(--blue-fill);
   color: #ffffff;
 }
 
@@ -701,7 +697,7 @@ select.field {
   padding: 0.3em 0.6em;
 }
 .md a {
-  color: var(--blue);
+  color: var(--blue-ink);
   text-decoration: underline;
 }
 .md .katex-display {

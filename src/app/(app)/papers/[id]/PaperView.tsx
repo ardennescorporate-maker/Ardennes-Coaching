@@ -87,7 +87,7 @@ export function PaperView({ id, paper, cfg, initialAnswers, deadline, marking }:
   return (
     <div className="mx-auto flex max-w-[860px] flex-col gap-4">
       <div className="card sticky top-[76px] z-20 flex items-center gap-3 !py-2.5 px-4 max-[900px]:top-[122px]">
-        <span className={`num flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xl font-bold ${urgent ? "bg-bad-soft text-bad" : "bg-surface-2"}`} role="timer" aria-label={`Time left ${mm} minutes ${ss} seconds`}>
+        <span className={`num flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xl font-bold ${urgent ? "bg-bad-soft text-bad-ink" : "bg-surface-2"}`} role="timer" aria-label={`Time left ${mm} minutes ${ss} seconds`}>
           <Clock size={18} aria-hidden /> {mm}:{ss}
         </span>
         <span className="text-sm text-ink-3">
@@ -99,7 +99,7 @@ export function PaperView({ id, paper, cfg, initialAnswers, deadline, marking }:
         </button>
       </div>
       {error && (
-        <p role="alert" className="rounded-xl bg-bad-soft px-3 py-2 text-sm font-bold text-bad">
+        <p role="alert" className="rounded-xl bg-bad-soft px-3 py-2 text-sm font-bold text-bad-ink">
           {error}
         </p>
       )}
@@ -147,7 +147,7 @@ export function PaperView({ id, paper, cfg, initialAnswers, deadline, marking }:
                         {q.options.map((o, i) => (
                           <label key={i} className={`flex cursor-pointer items-center gap-3 rounded-xl border-2 p-2.5 ${answers[q.id] === LETTERS[i] ? "border-blue bg-blue-soft" : "border-line hover:border-blue/40"}`}>
                             <input type="radio" name={`q-${q.id}`} className="sr-only" checked={answers[q.id] === LETTERS[i]} onChange={() => update(q.id, LETTERS[i])} />
-                            <span className={`num grid h-8 w-8 flex-none place-items-center rounded-full border-2 font-bold ${answers[q.id] === LETTERS[i] ? "border-blue bg-blue text-white" : "border-line"}`}>{LETTERS[i]}</span>
+                            <span className={`num grid h-8 w-8 flex-none place-items-center rounded-full border-2 font-bold ${answers[q.id] === LETTERS[i] ? "border-blue bg-blue-fill text-white" : "border-line"}`}>{LETTERS[i]}</span>
                             <Markdown className="min-w-0 flex-1">{o}</Markdown>
                           </label>
                         ))}

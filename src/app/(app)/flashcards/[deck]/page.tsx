@@ -36,7 +36,7 @@ export default async function DeckPage({ params, searchParams }: PageProps<"/fla
             </div>
           }
         />
-        {sp.new === "1" && <p className="rounded-xl bg-good-soft px-3 py-2 text-sm font-bold text-good">Pip made {cards?.length ?? 0} cards. Check them, then start reviewing!</p>}
+        {sp.new === "1" && <p className="rounded-xl bg-good-soft px-3 py-2 text-sm font-bold text-good-ink">Pip made {cards?.length ?? 0} cards. Check them, then start reviewing!</p>}
       </Card>
       <DeckEditor deckId={id} cards={cards ?? []} />
     </div>
